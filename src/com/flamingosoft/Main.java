@@ -3,13 +3,12 @@ package com.flamingosoft;
 import java.util.Scanner;
 
 public class Main {
+    static boolean checkResult = false;
 
     public static void main(String[] args) {
-//        bai1();
-//        bai2();
-//        bai4();
-        bai5();
+        bai2();
     }
+
     private static void bai1(){
         Scanner scanner = new Scanner(System.in);
         long[] F = new long[93];
@@ -34,15 +33,9 @@ public class Main {
             for (int j = 0; j < n; j++) {
                 a[j] = scanner.nextInt();
             }
-            boolean dx = false;
-            for (int j = 0; j < n; j++) {
-                dx = (a[j] == a[n - j - 1]);
-            }
-            if (dx){
-                System.out.println("YES");
-            }else {
-                System.out.println("NO");
-            }
+            for (int j = 0; j < n; j++) checkResult = (a[j] == a[n - j - 1]);
+            if (checkResult) System.out.println("YES");
+            else System.out.println("NO");
         }
         scanner.close();
     }
@@ -115,4 +108,32 @@ public class Main {
         }
         scanner.close();
     }
+    private static void bai7(){
+
+    }
+    private static void bai8(){
+        Scanner scanner = new Scanner(System.in);
+        int nTest = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < nTest; i++) {
+            String line = scanner.nextLine();
+            char[] arr = line.trim().toCharArray();
+            int len = arr.length;
+            int ck = 0;
+            for (int j = 0; j < len; j++) {
+                int val = Character.getNumericValue(arr[j]);
+                if ((arr[j] == arr[len - j - 1]) && val == 7){
+                    ck=1;
+                }else {
+                    ck=0;
+                }
+            }
+            if (ck==1){
+                System.out.println("YES");
+            }else {
+                System.out.println("NO");
+            }
+        }
+        scanner.close();
+    }
+
 }
