@@ -1,30 +1,35 @@
 package com.flamingosoft;
 
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
     static boolean checkResult = false;
 
     public static void main(String[] args) {
-        bai2();
+        bai8();
     }
 
-    private static void bai1(){
+    private static void bai() {
+
+    }
+
+    private static void bai1() {
         Scanner scanner = new Scanner(System.in);
         long[] F = new long[93];
         F[0] = 1;
         F[1] = 1;
         for (int i = 2; i < 93; i++) {
-            F[i] = F[i-1]+F[i-2];
+            F[i] = F[i - 1] + F[i - 2];
         }
         int nTest = scanner.nextInt();
         for (int i = 0; i < nTest; i++) {
-            int n=scanner.nextInt();
-            System.out.println(F[n-1]);
+            int n = scanner.nextInt();
+            System.out.println(F[n - 1]);
         }
         scanner.close();
     }
-    private static void bai2(){
+
+    private static void bai2() {
         Scanner scanner = new Scanner(System.in);
         int nTest = scanner.nextInt();
         for (int i = 0; i < nTest; i++) {
@@ -39,7 +44,8 @@ public class Main {
         }
         scanner.close();
     }
-    private static void bai3(){
+
+    private static void bai3() {
         Scanner scanner = new Scanner(System.in);
         int nTest = scanner.nextInt();
         for (int i = 0; i < nTest; i++) {
@@ -47,26 +53,31 @@ public class Main {
         }
         scanner.close();
     }
-    private static void bai4(){
+
+    private static void bai4() {
         Scanner scanner = new Scanner(System.in);
+        Map<Integer, Integer> hashMap = new TreeMap<>();
         int nTest = scanner.nextInt();
         for (int i = 0; i < nTest; i++) {
             int n = scanner.nextInt();
             int[] a = new int[n];
-            int[] dem = new int[100001];
             for (int j = 0; j < n; j++) {
                 a[j] = scanner.nextInt();
-                dem[a[j]] ++;
-            }
-            for (int j = 0; j < 100001; j++) {
-                if (dem[j] >0){
-                    System.out.println(dem[j]);
+                if (hashMap.containsKey(a[j])) {
+                    hashMap.put(a[j], hashMap.get(a[j]) + 1);
+                } else {
+                    hashMap.put(a[j], 1);
                 }
+            }
+            System.out.println("Test " + (i + 1) + ":");
+            for (Integer key : hashMap.keySet()) {
+                System.out.println(key + " xuat hien " + hashMap.get(key) + " lan");
             }
         }
         scanner.close();
     }
-    private static void bai5(){
+
+    private static void bai5() {
         Scanner scanner = new Scanner(System.in);
         int n = scanner.nextInt();
         int m = scanner.nextInt();
@@ -84,7 +95,8 @@ public class Main {
         }
         scanner.close();
     }
-    private static void bai6(){
+
+    private static void bai6() {
         Scanner scanner = new Scanner(System.in);
         int[][] a = new int[10][10];
         int[][] b = new int[10][10];
@@ -108,32 +120,94 @@ public class Main {
         }
         scanner.close();
     }
-    private static void bai7(){
 
-    }
-    private static void bai8(){
+    private static void bai7() {
         Scanner scanner = new Scanner(System.in);
-        int nTest = Integer.parseInt(scanner.nextLine());
+        int nTest = scanner.nextInt();
         for (int i = 0; i < nTest; i++) {
-            String line = scanner.nextLine();
-            char[] arr = line.trim().toCharArray();
-            int len = arr.length;
-            int ck = 0;
-            for (int j = 0; j < len; j++) {
-                int val = Character.getNumericValue(arr[j]);
-                if ((arr[j] == arr[len - j - 1]) && val == 7){
-                    ck=1;
-                }else {
-                    ck=0;
+            int n = scanner.nextInt();
+            int r = n * n;
+            int h = 0;
+            int c = n - 1;
+            int[][] a = new int[21][21];
+            while (r > 0) {
+                for (int j = h; j <= c; j++) {
+                    a[h][j] = r;
+                    r--;
                 }
+                for (int j = h + 1; j <= c; j++) {
+                    a[j][c] = r;
+                    r--;
+                }
+                for (int j = c - 1; j >= h; j--) {
+                    a[c][j] = r;
+                    r--;
+                }
+                for (int j = c - 1; j > h; j--) {
+                    a[j][h] = r;
+                    r--;
+                }
+                h++;
+                c--;
             }
-            if (ck==1){
-                System.out.println("YES");
-            }else {
-                System.out.println("NO");
+            for (int j = 0; j < n; j++) {
+                for (int k = 0; k < n; k++) {
+                    System.out.print(a[j][k] + " ");
+                }
+                System.out.println();
             }
         }
         scanner.close();
     }
 
+    private static void bai8() {
+        Scanner scanner = new Scanner(System.in);
+        int nTest = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < nTest; i++) {
+            String line = scanner.nextLine();
+            if (checkNumberRight(line)) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+
+        }
+        scanner.close();
+    }
+
+    private static boolean checkNumberRight(String line) {
+        int len = line.length();
+        int sum = 0;
+        if (len % 2 != 0) {
+            int mid = Character.getNumericValue(line.charAt(len / 2));
+            if (mid % 2 != 0) {
+                return false;
+            }
+            sum = sum + mid;
+        }
+        for (int j = 0; j < len / 2; j++) {
+            int l = Character.getNumericValue(line.charAt(j));
+            int r = Character.getNumericValue(line.charAt(len - j - 1));
+            if (l != r || l % 2 != 0) {
+                return false;
+            }
+            sum = sum + l*2;
+        }
+        return sum % 10 == 0;
+    }
+
+    private static void bai9() {
+        Scanner scanner = new Scanner(System.in);
+        int nTest = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < nTest; i++) {
+            String line = scanner.nextLine();
+            if (checkNumberRight(line)) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+
+        }
+        scanner.close();
+    }
 }
