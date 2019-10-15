@@ -6,7 +6,7 @@ public class Main {
     static boolean checkResult = false;
 
     public static void main(String[] args) {
-        bai8();
+        bai13();
     }
 
     private static void bai() {
@@ -191,7 +191,7 @@ public class Main {
             if (l != r || l % 2 != 0) {
                 return false;
             }
-            sum = sum + l*2;
+            sum = sum + l * 2;
         }
         return sum % 10 == 0;
     }
@@ -210,4 +210,77 @@ public class Main {
         }
         scanner.close();
     }
+
+    private static void bai10() {
+        for (int i = 0; i < 100; i++) {
+            if (checkPrime(i)){
+                System.out.println(i);
+            }
+        }
+    }
+
+    private static boolean checkPrime(int x) {
+        if (x == 2) {
+            return true;
+        }
+        if (x < 2 || x % 2 == 0) {
+            return false;
+        }
+        int mid = (int) Math.sqrt(x);
+        for (int i = 2; i <= mid; i++) {
+            if (x % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static void bai12(){
+        Scanner scanner = new Scanner(System.in);
+        int nTest = Integer.parseInt(scanner.nextLine());
+        for (int i = 0; i < nTest; i++) {
+            String line = scanner.nextLine();
+            if (!line.equals("")){
+                StringBuilder builder = new StringBuilder();
+                StringTokenizer tokenizer = new StringTokenizer(line.trim());
+                while (tokenizer.hasMoreTokens()){
+                    String nex = tokenizer.nextToken();
+                    builder.append(String.valueOf(nex.charAt(0)).toUpperCase());
+                    for (int j = 1; j < nex.length(); j++) {
+                        builder.append(String.valueOf(nex.charAt(j)).toLowerCase());
+                    }
+                    builder.append(" ");
+                }
+                builder.deleteCharAt(builder.length()-1);
+                System.out.println(builder.toString());
+            }
+        }
+        scanner.close();
+    }
+    private static void bai13(){
+//        Scanner scanner = new Scanner(System.in);
+//        int nTest = scanner.nextInt();
+        int nTest = 1;
+        for (int i = 0; i < nTest; i++) {
+//            int n = scanner.nextInt();
+            int n = 3;
+            int[] a = new int[n];
+            for (int j = 0; j < n; j++) {
+                a[j] = 0;
+            }
+
+            int j=n-1;
+            while (j>=0){
+                if (a[j]==0){
+                    a[j] = 1;
+                    for (int k = j+1; k < n; k++) {
+                        a[k] = 0;
+                    }
+                    j=n;
+                }
+                j--;
+            }
+        }
+//        scanner.close();
+    }
+
 }
