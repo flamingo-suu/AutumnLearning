@@ -1,16 +1,18 @@
 package com.flamingosoft;
 
+import com.sun.tools.javah.Gen;
+
 import java.util.*;
 
 public class Main {
     static boolean checkResult = false;
 
     public static void main(String[] args) {
-        bai13();
+        bai();
     }
 
     private static void bai() {
-
+        GenerationHelper.solve();
     }
 
     private static void bai1() {
@@ -53,6 +55,8 @@ public class Main {
         }
         scanner.close();
     }
+
+
 
     private static void bai4() {
         Scanner scanner = new Scanner(System.in);
