@@ -8,52 +8,49 @@ public class Bai14 {
     private int[] a;
     private boolean ok = false;
 
-    private void in(){
-        for (int i = 1; i <=n; i++)
-        {
-            if (a[i] != 1){
+    private void in() {
+        for (int i = 1; i <= n; i++) {
+            if (a[i] != 1) {
                 System.out.print("A");
-            }else {
+            } else {
                 System.out.print("B");
             }
         }
         System.out.println();
     }
-    private boolean test(){
-        int dem=0;
-        int i=1;
-        while (i<=n){
-            if (a[i] == 0){
+
+    private boolean test() {
+        int dem = 0;
+        int i = 1;
+        while (i <= n) {
+            if (a[i] == 0) {
                 int j = i;
-                while (j<=n && a[j] == 0){
+                while (j <= n && a[j] == 0) {
                     j++;
                 }
-                if (j-i == k){
-                    dem = dem+1;
-                }else if (j-i > k){
+                if (j - i == k) {
+                    dem = dem + 1;
+                } else if (j - i > k) {
                     return false;
                 }
-                i=j;
+                i = j;
             }
             i++;
 
         }
         return dem == 1;
     }
-    private void sinh(){
-        int i=n;
-        while (a[i] == 1)
-        {
+
+    private void sinh() {
+        int i = n;
+        while (a[i] == 1) {
             i--;
         }
-        if (i==0) {
+        if (i == 0) {
             ok = true;
-        }
-        else
-        {
-            a[i] =1;
-            for (int j = i+1; j <= n; j++)
-            {
+        } else {
+            a[i] = 1;
+            for (int j = i + 1; j <= n; j++) {
                 a[j] = 0;
             }
 
@@ -63,8 +60,8 @@ public class Bai14 {
 
     private void solve() {
         a = new int[111];
-        while (!ok){
-            if (test()){
+        while (!ok) {
+            if (test()) {
                 in();
             }
             sinh();

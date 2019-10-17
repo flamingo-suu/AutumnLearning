@@ -11,7 +11,7 @@ public class Bai7 {
             int r = n * n;
             int h = 0;
             int c = n - 1;
-            int[][] a = new int[21][21];
+            int[][] a = new int[n][n];
             while (r > 0) {
                 for (int j = h; j <= c; j++) {
                     a[h][j] = r;
@@ -32,9 +32,15 @@ public class Bai7 {
                 h++;
                 c--;
             }
+            System.out.println("Test " + (i+1) + ":");
             for (int j = 0; j < n; j++) {
                 for (int k = 0; k < n; k++) {
-                    System.out.print(a[j][k] + " ");
+                    if (k<n-1){
+                        System.out.print(a[j][k] + " ");
+                    }else {
+                        System.out.print(a[j][k]);
+                    }
+
                 }
                 System.out.println();
             }
