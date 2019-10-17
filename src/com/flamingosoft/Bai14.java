@@ -30,6 +30,8 @@ public class Bai14 {
                 }
                 if (j-i == k){
                     dem = dem+1;
+                }else if (j-i > k){
+                    return false;
                 }
                 i=j;
             }
