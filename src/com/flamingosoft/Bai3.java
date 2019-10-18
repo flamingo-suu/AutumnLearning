@@ -59,7 +59,10 @@ public class Bai3 {
             }
         }
         while (!queue.isEmpty()){
-            System.out.println(queue.remove());
+            int res = queue.remove();
+            for (int j = res-mx; j <=res ; j++) {
+                System.out.print(a[j]);
+            }
         }
     }
 }
