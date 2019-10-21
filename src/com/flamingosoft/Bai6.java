@@ -1,4 +1,4 @@
-package com.flamingosoft;
+//package com.flamingosoft;
 
 import java.util.Scanner;
 
@@ -29,10 +29,12 @@ public class Bai6 {
                     }
                 }
             }
+            System.out.println("Test " + (i+1)+ ":");
             for (int j = 0; j < n; j++) {
-                for (int k = 0; k < n; k++) {
+                for (int k = 0; k < n-1; k++) {
                     System.out.print(res[j][k] +" ");
                 }
+                System.out.print(res[j][n-1]);
                 System.out.println();
             }
         }

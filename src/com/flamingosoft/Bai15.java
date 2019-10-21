@@ -1,23 +1,29 @@
 package com.flamingosoft;
 
+import java.util.Scanner;
+
 public class Bai15 {
     private boolean ok = false;
     private int n,k;
     private int[] a;
+    private int[] b;
 
 
-    private Bai15(int n, int k){
-        this.n = n;
-        this.k = k;
-        a = new int[n+1];
+    private Bai15(Scanner scanner){
+        this.n = scanner.nextInt();
+        this.k = scanner.nextInt();
+        a = new int[k+1];
+        b = new int[k+1];
         for (int i = 1; i <=k; i++) {
-            a[i] = i;
+            a[i] = scanner.nextInt();
+            b[i] = a[i];
         }
     }
 
-    private void in(){
-        for (int i = 1; i <=k; i++) {
-            System.out.print(a[i]);
+    private void in(int[] x){
+        int len = x.length;
+        for (int i = 1; i <len; i++) {
+            System.out.print(x[i]);
         }
         System.out.println();
     }
@@ -37,14 +43,32 @@ public class Bai15 {
             }
         }
     }
-
-    private void solve(){
-        while (!ok){
-            in();
-            sinh();
+    private void test(){
+        int dem =0;
+        for (int i = 1; i < k + 1; i++) {
+            if (b[i] != a[i])
+            {
+                dem++;
+            }
+        }
+        if (dem!=0){
+            System.out.println(dem);
+        }else {
+            System.out.println(k);
         }
     }
+
+    private void solve(){
+//        while (!ok){
+            in(b);
+            sinh();
+            test();
+            in(a);
+//        }
+    }
     public static void main(String[] args) {
-        new Bai15(10,4).solve();
+        Scanner scanner = new Scanner(System.in);
+        new Bai15(scanner).solve();
+        scanner.close();
     }
 }

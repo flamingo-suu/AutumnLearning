@@ -1,4 +1,4 @@
-package com.flamingosoft;
+//package com.flamingosoft;
 
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -17,6 +17,7 @@ public class Bai3 {
             for (int j = 0; j < n; j++) {
                 a[j] = scanner.nextInt();
             }
+            System.out.println("Test "+ (i+1) +":");
             solve();
         }
         scanner.close();
@@ -58,11 +59,14 @@ public class Bai3 {
                 }
             }
         }
+        System.out.println(mx+1);
         while (!queue.isEmpty()){
             int res = queue.remove();
-            for (int j = res-mx; j <=res ; j++) {
-                System.out.print(a[j]);
+            for (int j = res-mx; j <res ; j++) {
+                System.out.print(a[j]+ " ");
             }
+            System.out.print(a[res]);
+            System.out.println();
         }
     }
 }

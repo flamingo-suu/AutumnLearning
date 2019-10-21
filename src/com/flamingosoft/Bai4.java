@@ -1,5 +1,6 @@
-package com.flamingosoft;
+//package com.flamingosoft;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class Bai4 {
@@ -22,20 +23,20 @@ public class Bai4 {
 
     private static void countArrays() {
         int[] b = new int[n];
-        int[] dem = new int[100001];
-        int tmp = 0;
+        HashMap<Integer,Integer> hashMap= new HashMap<>();
+        int tmp=0;
         for (int value : a) {
-            for (int j = 0; j <= tmp; j++) {
-                if (value == b[j]) {
-                    dem[b[j]]++;
-                }
+            if (!hashMap.containsKey(value)){
+                hashMap.put(value,1);
+                b[tmp] = value;
+                tmp++;
+            }else {
+                int val = hashMap.get(value);
+                hashMap.put(value,val+1);
             }
-            b[tmp] = value;
-            dem[value]++;
-            tmp++;
         }
         for (int i = 0; i < tmp; i++) {
-            System.out.println(b[i] +"  " + dem[b[i]]);
+            System.out.println(b[i] +" xuat hien " + hashMap.get(b[i])+ " lan");
         }
     }
 }

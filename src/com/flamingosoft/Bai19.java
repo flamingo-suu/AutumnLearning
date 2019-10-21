@@ -1,5 +1,7 @@
 package com.flamingosoft;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class Bai19 {
@@ -14,11 +16,15 @@ public class Bai19 {
     }
 
     private int n;
+
     private Bai19(int n) {
         this.n = n;
     }
     private void solve(){
-
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(90);
+        System.out.println(queue.peek());
+        queue.remove();
     }
 
 }

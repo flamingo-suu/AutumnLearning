@@ -21,22 +21,10 @@ public class Bai14 {
 
     private boolean test() {
         int dem = 0;
-        int i = 1;
-        while (i <= n) {
-            if (a[i] == 0) {
-                int j = i;
-                while (j <= n && a[j] == 0) {
-                    j++;
-                }
-                if (j - i == k) {
-                    dem = dem + 1;
-                } else if (j - i > k) {
-                    return false;
-                }
-                i = j;
+        for (int i = 1; i <=n; i++) {
+            if (a[i] == 0){
+                dem++;
             }
-            i++;
-
         }
         return dem == 1;
     }
