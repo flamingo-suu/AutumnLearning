@@ -1,4 +1,4 @@
-package com.flamingosoft;
+package com.flamingosoft.one;
 
 import java.util.Scanner;
 import java.util.StringTokenizer;

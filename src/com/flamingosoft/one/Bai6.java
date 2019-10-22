@@ -1,4 +1,4 @@
-//package com.flamingosoft;
+package com.flamingosoft.one;//package com.flamingosoft;
 
 import java.util.Scanner;
 

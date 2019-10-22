@@ -1,4 +1,4 @@
-package com.flamingosoft;
+package com.flamingosoft.one;
 
 public class Bai23 {
     private static long Prime(long n){
