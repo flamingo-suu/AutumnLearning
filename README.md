@@ -21,8 +21,6 @@ AutumnLearning
 - Bai13
 - Bai
 
-
-
 ## Two
 - Bai1
 - Bai2
