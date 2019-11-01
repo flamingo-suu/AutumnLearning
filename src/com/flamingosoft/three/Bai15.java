@@ -37,16 +37,19 @@ public class Bai15 {
         int dem=0;
         for (int i = 1; i < n+1 ; i++) {
             for (int j = 1; j < n+1; j++) {
-                if (added[i][j] == 0 && added[j][i] == 1 && s[i][j]==1){
+                if (added[i][j] == 0 && added[j][i] == 0 && s[i][j]==1 && (!vector.contains(i) || !vector.contains(j))){
                     added[i][j] = 1;
                     added[j][i] = 1;
-                    if (!vector.contains(i) && !vector.contains(j)){
-                        vector.add(i);
-                        vector.add(j);
-                        dem++;
-                    }
+                    vector.add(i);
+                    vector.add(j);
+                    dem++;
                 }
             }
+        }
+        int i=0;
+        while (i<vector.size()){
+            System.out.println(vector.get(i));
+            i++;
         }
         if (dem == n-1){
             System.out.println("YES");
