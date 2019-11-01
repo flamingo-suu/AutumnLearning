@@ -47,16 +47,19 @@ public class Bai22 {
 
     private void solve() {
         DFS(u);
+        int dem = 0;
         boolean ck = false;
         while (previous[v] != 0){
             if (previous[v] == u){
                 ck = true;
-                System.out.println(1);
             }
+            dem++;
             v = previous[v];
         }
         if (!ck){
             System.out.println(-1);
+        }else {
+            System.out.println(dem);
         }
     }
 }

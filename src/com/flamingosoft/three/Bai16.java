@@ -1,5 +1,7 @@
 package com.flamingosoft.three;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class Bai16 {
@@ -63,6 +65,11 @@ public class Bai16 {
                 DFS(x-1,y);
             }
         }
+    }
+    private void BFS(int x, int y){
+        marked[x][y] = true;
+        Queue<Integer> queue = new LinkedList<>();
+
     }
 
 
