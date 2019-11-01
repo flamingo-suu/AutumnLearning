@@ -5,29 +5,66 @@ import java.util.Scanner;
 public class Bai16 {
     private int n,m;
     private int[][] a;
-    private boolean[][] chuaXet;
+    private boolean[][] marked;
 
     private Bai16(Scanner scanner) {
         n = scanner.nextInt();
         m = scanner.nextInt();
-        a = new int[n+1][m+1];
-        chuaXet = new boolean[n+1][m+1];
-        for (int i = 1; i <= n; i++) {
-            for (int j = 1; j <= m; j++) {
+        a = new int[n][m];
+        marked = new boolean[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
                 a[i][j] = scanner.nextInt();
-                chuaXet[i][j] = true;
+                marked[i][j] = false;
+                marked[j][i] = false;
             }
         }
     }
 
     private void DFS(int x,int y){
-        chuaXet[x][y] = false;
-        for (int i = 0; i <= n; i++) {
-            for (int j = 0; j <= m; j++) {
-
+        marked[x][y] = true;
+        if(x-1 > -1 && y-1 > -1){
+            if (!marked[x-1][y-1] && a[x-1][y-1] == 1){
+                DFS(x-1,y-1);
+            }
+        }
+        if(y-1 > -1){
+            if (!marked[x][y-1] && a[x][y-1] == 1){
+                DFS(x,y-1);
+            }
+        }
+        if(x+1 < n && y-1 > -1){
+            if (!marked[x+1][y-1] && a[x+1][y-1] == 1){
+                DFS(x+1,y-1);
+            }
+        }
+        if(x+1 < n){
+            if (!marked[x+1][y] && a[x+1][y] == 1){
+                DFS(x+1,y);
+            }
+        }
+        if(x+1 <= 1 && y+1 < n){
+            if (!marked[x+1][y+1] && a[x+1][y+1] == 1){
+                DFS(x+1,y+1);
+            }
+        }
+        if(y+1 < n){
+            if (!marked[x][y+1] && a[x][y+1] == 1){
+                DFS(x,y+1);
+            }
+        }
+        if(x-1 > -1 && y+1 < n){
+            if (!marked[x-1][y+1] && a[x-1][y+1] == 1){
+                DFS(x-1,y+1);
+            }
+        }
+        if(x-1 > -1){
+            if (!marked[x-1][y] && a[x-1][y] == 1){
+                DFS(x-1,y);
             }
         }
     }
+
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -36,6 +73,15 @@ public class Bai16 {
     }
 
     private void solve() {
-
+        int dem = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                if (!marked[i][j] && a[i][j] ==1){
+                    DFS(i,j);
+                    dem++;
+                }
+            }
+        }
+        System.out.println(dem);
     }
 }
