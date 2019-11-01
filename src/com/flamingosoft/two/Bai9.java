@@ -27,7 +27,7 @@ public class Bai9 {
         int l = 0;
         int r = n-1;
         int res = -1;
-        while (l < r){
+        while (l <= r){
             int mid = (l+r)/2;
             if (a[mid] > k){
                 r = mid-1;

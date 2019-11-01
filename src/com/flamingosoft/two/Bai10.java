@@ -33,19 +33,14 @@ public class Bai10 {
     }
 
     private int getNumberStore(int b) {
-        int l = 0;
-        int r = n-1;
-        while (l < r){
-            int mid = (l+r)/2;
-            if (a[mid] > b){
-                r = mid-1;
-            }
-            else if (a[mid] < b){
-                l = mid + 1;
+        int l=0;
+        for (int i = 0; i < n; i++) {
+            if (b >= a[i]){
+                l++;
             }else {
                 break;
             }
         }
-        return 1;
+        return l;
     }
 }
